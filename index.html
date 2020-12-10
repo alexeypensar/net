@@ -211,9 +211,9 @@
                             if (this.transferCity !== '') {
                                 second.textContent = 'Трансфер: ' + this.transferCity;
                             }
-                            fourth.textContent = ('Стоимость перелёта: ' + this.airPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '  (' + (+el.price - 40 + +margin).toString() + ' руб./кг)';
-                            fifth.textContent = ('Терминальная обработка: ' + this.terminalPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                            sixth.textContent = ('Оформление ГАН: ' + this.waybillPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            fourth.textContent = ('Перелёт: ' + this.airPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '  (' + (+el.price - 40 + +margin).toString() + ' руб./кг)';
+                            fifth.textContent = ('Т/О: ' + this.terminalPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' (' + this.terminal + ' руб./кг)';
+                            sixth.textContent = ('ГАН: ' + this.waybillPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                             // sixthandahalf.textContent = ('Забор по Новосибирску: ' + maxPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
 
