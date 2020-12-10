@@ -25,6 +25,16 @@
         <label for="volume">Объём:</label>
         <input autocomplete="off" type="number" step="0.1" v-model="volume" id="volume">
     </div>
+
+    <div>
+        <label for="margin">Наценка:</label>
+        <input autocomplete="off" type="number" min="0" v-model="margin" id="margin">
+    </div>
+
+    <div>
+        <label for="awbprice">Стоимость ГАН:</label>
+        <input autocomplete="off" type="number" v-model="awbprice" id="awbprice">
+    </div>
 <!--    <div class="expedition__checkbox">-->
 
 <!--&lt;!&ndash;        <label class="c-custom-checkbox">&ndash;&gt;-->
@@ -78,8 +88,10 @@
                 let city = this.city;
                 const terminal = this.terminal;
                 let volume = this.volume;
+                let margin = this.margin;
+                let awbprice = this.awbprice;
 
-                let expedition = this.expedition;
+                // let expedition = this.expedition;
 
 
 
@@ -103,7 +115,7 @@
                             }
 
 
-                            this.airPrice = +weight * +el.price;
+                            this.airPrice = +weight * ((+el.price - 40) + +margin);
                             this.terminalPrice = (+weight * terminal);
 
                             if (this.terminalPrice < this.minTerminal) {
@@ -112,7 +124,10 @@
 
 
                             this.waybillPrice = el.waybill;
+
+                            this.waybillPrice = this.awbprice;
                             this.showDispatcher = el.dispatcher;
+
                             this.result = +this.airPrice + +this.terminalPrice + +this.waybillPrice;
                             el.transferCity !== '' ? this.transferCity = el.transferCity : this.transferCity = '';
 
@@ -147,9 +162,6 @@
                             wrapper.appendChild(fifth);
                             wrapper.appendChild(sixth);
                             // wrapper.appendChild(sixthandahalf);
-
-
-
 
 
                             wrapper.appendChild(seventh);
@@ -199,7 +211,7 @@
                             if (this.transferCity !== '') {
                                 second.textContent = 'Трансфер: ' + this.transferCity;
                             }
-                            fourth.textContent = ('Стоимость перелёта: ' + this.airPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            fourth.textContent = ('Стоимость перелёта: ' + this.airPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '  (' + (+el.price - 40 + +margin).toString() + ' руб./кг)';
                             fifth.textContent = ('Терминальная обработка: ' + this.terminalPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                             sixth.textContent = ('Оформление ГАН: ' + this.waybillPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                             // sixthandahalf.textContent = ('Забор по Новосибирску: ' + maxPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -325,6 +337,8 @@
             city: '',
             weight: '',
             volume: '',
+            awbprice: '',
+            margin: '',
             result: 0,
             terminal: 7.52,
             minTerminal: 229,
