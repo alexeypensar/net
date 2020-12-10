@@ -172,6 +172,13 @@ article b {
   padding-top: 32px;
   /*color: #20b2aa;*/
 }
+
+@media screen and (max-width: 1600px) {
+  .calculator div input, .calculator div button {
+    width: 170px;
+  }
+}
+
 @media screen and (max-width: 1100px) {
   .calculator {
     flex-direction: column;
