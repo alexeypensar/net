@@ -33,7 +33,7 @@
 
     <div>
         <label for="awbprice">Стоимость ГАН:</label>
-        <input autocomplete="off" type="number" v-model="awbprice" id="awbprice">
+        <input autocomplete="off" type="number" min="0" v-model="awbprice" id="awbprice">
     </div>
 <!--    <div class="expedition__checkbox">-->
 
@@ -211,7 +211,7 @@
                             if (this.transferCity !== '') {
                                 second.textContent = 'Трансфер: ' + this.transferCity;
                             }
-                            fourth.textContent = ('Перелёт: ' + this.airPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '  (' + (+el.price - 40 + +margin).toString() + ' руб./кг)';
+                            fourth.textContent = ('Перелёт: ' + this.airPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' (' + (+el.price - 40 + +margin).toString() + ' руб./кг)';
                             fifth.textContent = ('Т/О: ' + this.terminalPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' (' + this.terminal + ' руб./кг)';
                             sixth.textContent = ('ГАН: ' + this.waybillPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                             // sixthandahalf.textContent = ('Забор по Новосибирску: ' + maxPrice.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
